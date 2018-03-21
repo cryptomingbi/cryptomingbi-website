@@ -9,13 +9,13 @@ export default class Wallet {
     } else {
       instance.$message({
         type: 'error',
-        message: 'No Web3 Provider Found, Consider MetaMask?',
+        message: '没有找到 Web3 提供者, 考虑一下安装 MetaMask 插件？',
       });
     }
     this.account = this.wallet.eth.accounts[0];
     this.wallet.eth.defaultAccount = this.account;
     const Contract = this.wallet.eth.contract(abi);
-    this.contract = Contract.at('0x2037a5581b4e975ae0927c710b7e099425081fbb');
+    this.contract = Contract.at('0x399468D1dC0d219CB9812B1e1a64acdf9B677a0a');
   }
 
   toWei(price) {
