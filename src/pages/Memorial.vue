@@ -4,6 +4,12 @@
     el-table-column(prop="identity", label="发行编号")
     el-table-column(prop="address", label="烧钱人")
     el-table-column(prop="data", label="烧至")
+  el-pagination(
+    @current-change="handleCurrentChange"
+    :current-page.sync="currentPage"
+    :page-size="10"
+    layout="total, prev, pager, next, jumper"
+    :total="ids.length")
 </template>
 
 <script>
@@ -16,6 +22,7 @@ export default {
       wallet: new Wallet(this),
       ids: [],
       cashes: [],
+      currentPage: 1,
     };
   },
   methods: {
@@ -47,9 +54,15 @@ export default {
             address: result[1],
             data: result[2],
           });
-          if (index + 1 < this.ids.length) { this.getDetail(index + 1); }
+          if (index + 1 < 10 * this.currentPage && index + 1 < this.ids.length) {
+            this.getDetail(index + 1);
+          }
         }
       });
+    },
+    handleCurrentChange() {
+      this.cashes = [];
+      this.getDetail((this.currentPage - 1) * 10);
     },
   },
   mounted() {
