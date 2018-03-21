@@ -13,10 +13,6 @@ export default {
       wallet: new Wallet(this),
     };
   },
-  methods: {
-  },
-  mounted() {
-  },
 };
 </script>
 

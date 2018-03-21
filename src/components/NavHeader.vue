@@ -12,7 +12,7 @@ el-menu.menu(router, :default-active="$route.path", :default-openeds="['/']", mo
   el-menu-item(index="/my")
     span(slot="title")
       | 我的冥币
-  el-menu-item(index="/burnt")
+  el-menu-item(index="/memorial")
     span(slot="title")
       | 纪念堂
   el-menu-item(index="/trade", disabled)

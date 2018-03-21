@@ -17,7 +17,7 @@
     "stylus-loader": "^3.0.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "web3": "^1.0.0-beta.33"
+    "web3": "^0.20.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
