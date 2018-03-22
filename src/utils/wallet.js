@@ -12,6 +12,12 @@ export default class Wallet {
         message: '没有找到 Web3 插件，无法交易, 考虑一下安装 MetaMask 插件？',
       });
     }
+    if (this.wallet.eth.accounts.length === 0) {
+      instance.$message({
+        type: 'error',
+        message: '您的 Web3 插件没有登录或注册钱包，尚不能使用交易功能。',
+      });
+    }
     this.account = this.wallet.eth.accounts[0];
     this.wallet.eth.defaultAccount = this.account;
     const Contract = this.wallet.eth.contract(abi);
