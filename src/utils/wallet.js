@@ -9,7 +9,7 @@ export default class Wallet {
     } else {
       instance.$message({
         type: 'error',
-        message: '没有找到 Web3 提供者, 考虑一下安装 MetaMask 插件？',
+        message: '没有找到 Web3 插件，无法交易, 考虑一下安装 MetaMask 插件？',
       });
     }
     this.account = this.wallet.eth.accounts[0];
