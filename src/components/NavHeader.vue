@@ -15,9 +15,10 @@ el-menu.menu(router, :default-active="$route.path", :default-openeds="['/']", mo
   el-menu-item(index="/memorial")
     span(slot="title")
       | 纪念堂
-  el-menu-item(index="/trade", disabled)
+  el-menu-item(index="/trade")
     span(slot="title")
-      | 交易所（暂未开放）
+      b
+        | 冥币交易（清明新上线）
 </template>
 
 <script>

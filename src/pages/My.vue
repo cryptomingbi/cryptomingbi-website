@@ -4,6 +4,8 @@
     el-table-column(prop="identity", label="发行编号")
     el-table-column(label="操作")
       template(slot-scope="scope")
+        el-button(size="mini", @click="approve(scope.row.raw)")
+          | 授权交易
         el-button(size="mini", @click="transfer(scope.row.raw)")
           | 转账
         el-button(size="mini", type="danger", @click="burn(scope.row.raw)")
@@ -67,6 +69,27 @@ export default {
         cancelButtonText: '取消',
       }).then(({ value }) => {
         this.wallet.contract.burn(id, value, (error, result) => {
+          if (error) {
+            this.$message({
+              type: 'error',
+              message: error,
+            });
+          } else {
+            this.$message({
+              type: 'info',
+              message: `已请求 ${result}`,
+            });
+          }
+        });
+      }).catch(() => {
+      });
+    },
+    approve(id) {
+      this.$confirm('此操作将允许您对此冥币进行挂单', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+      }).then(() => {
+        this.wallet.contract.approve(this.wallet.tradeContractAddress, id, (error, result) => {
           if (error) {
             this.$message({
               type: 'error',
