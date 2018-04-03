@@ -1,11 +1,13 @@
 <template lang="pug">
 #trade
-  el-button(type="primary", size="medium", @click="showDialog=true")
-    | 挂单
   h5
     | 冥币交易自由。请先在「我的冥币」中确认已授权交易，否则交易所无法导入冥币。
   h5
-    | 交易除合约本身的手续费外，不额外征收任何交易手续费。
+    | 授权后在此点击「挂单」，输入编号和价格，提交即可。
+  h5
+    | 采用去中心化点对点合约方案，除了付给矿工的 gas，合约不收取任何额外手续费。
+  el-button(type="primary", size="medium", @click="showDialog=true")
+    | 挂单
   el-table(:data="trading")
     el-table-column(prop="identity", label="发行编号")
     el-table-column(prop="price", label="价格")
