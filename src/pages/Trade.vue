@@ -120,6 +120,10 @@ export default {
         });
       } else {
         for (let i = 0; i < result[0].length; i += 1) {
+          if (result[2][i].toString() === '0x0000000000000000000000000000000000000000') {
+            // eslint-disable-next-line no-continue
+            continue;
+          }
           this.trading.push({
             identity: `冥第 ${result[0][i].toString()} 号`,
             price: `${this.wallet.toEther(result[1][i])} ETH`,
